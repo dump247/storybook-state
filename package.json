@@ -1,5 +1,5 @@
 {
-  "name": "storybook-state",
+  "name": "@dump247/storybook-state",
   "version": "1.0.0",
   "description": "Manage component state in storybook stories.",
   "main": "dist/index.js",
