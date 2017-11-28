@@ -1,0 +1,23 @@
+{
+  "name": "storybook-state",
+  "version": "1.0.0",
+  "description": "Manage component state in storybook stories.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dump247/storybook-state.git"
+  },
+  "keywords": [
+    "react",
+    "storybook"
+  ],
+  "author": "Cory Thomas <cthomas7577@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dump247/storybook-state/issues"
+  },
+  "homepage": "https://github.com/dump247/storybook-state#readme"
+}
