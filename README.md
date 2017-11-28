@@ -62,3 +62,9 @@ This only sets/overwrites the specific keys provided.
 
 Reset the store to the initial state.
 
+## Panel
+
+This project includes a storybook panel that displays the current state and allows
+for resetting the state.
+
+![Panel Screenshot](panel-screenshot.png?raw=true "Panel")
