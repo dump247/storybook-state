@@ -29,7 +29,9 @@ import { withState } from '@dump247/storybook-state';
 
 storiesOf('Checkbox', module)
 .add('with check', withState({ checked: false }, (store) => (
-  <Checkbox {...store.state} label="Test Checkbox" onChange={(checked) => store.set({ checked })}/>
+  <Checkbox {...store.state}
+            label="Test Checkbox"
+	    onChange={(checked) => store.set({ checked })}/>
 ));
 ```
 
