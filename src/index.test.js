@@ -2,6 +2,15 @@ import React from 'react';
 import { withState } from './index';
 import { mount, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-15';
+import addons from '@storybook/addons';
+
+jest.mock('@storybook/addons');
+
+function mockChannel() {
+  return { emit: jest.fn(), on: jest.fn(), removeListener: jest.fn() };
+}
+
+addons.getChannel.mockReturnValue(mockChannel());
 
 configure({ adapter: new Adapter() });
 

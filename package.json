@@ -1,11 +1,13 @@
 {
   "name": "@dump247/storybook-state",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Manage component state in storybook stories.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "babel index.js --out-dir dist",
-    "test": "jest"
+    "build": "cd src/ && babel index.js register.js --out-dir ../dist",
+    "dist": "npm publish",
+    "test": "jest",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "repository": {
     "type": "git",
@@ -29,11 +31,10 @@
     "react": "^15.6.0"
   },
   "dependencies": {
-    "prop-types": "^15.6.0",
-    "react": "^15.6.0",
-    "uuid": "^3.1.0"
+    "@storybook/addons": "^3.2.16"
   },
   "devDependencies": {
+    "@storybook/react": "^3.2.16",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.10",
     "babel-preset-es2015": "^6.24.1",
