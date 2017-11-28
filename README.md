@@ -31,7 +31,7 @@ storiesOf('Checkbox', module)
 .add('with check', withState({ checked: false }, (store) => (
   <Checkbox {...store.state}
             label="Test Checkbox"
-	    onChange={(checked) => store.set({ checked })}/>
+            onChange={(checked) => store.set({ checked })}/>
 ));
 ```
 
