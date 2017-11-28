@@ -65,6 +65,11 @@ test('reset to initial state', () => {
   expectProps(stateComponent.childAt(0)).toEqual({ var1: 1 });
 });
 
+test('unmount state component', () => {
+  const stateComponent = mount(withState({ var1: 1 }, (store) => <TestComponent {...store.state}/>)());
+  stateComponent.unmount();
+});
+
 function expectProps(component) {
   const props = component.props();
   return expect(Object.keys(props)

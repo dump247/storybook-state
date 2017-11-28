@@ -30,7 +30,7 @@ class Store {
   }
 
   unsubscribe(subscriptionId) {
-    for (const [index, { subscriptionId: handlerId }] of this.handlers) {
+    for (const [index, { subscriptionId: handlerId }] of this.handlers.entries()) {
       if (handlerId === subscriptionId) {
         this.handlers.splice(index, 1);
         break;
