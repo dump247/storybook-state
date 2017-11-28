@@ -36,7 +36,7 @@ class StatePanel extends React.Component {
   };
 
   state = {
-    storyState: {},
+    storyState: null,
   };
 
   componentDidMount() {
@@ -51,7 +51,7 @@ class StatePanel extends React.Component {
     channel.removeListener('dump247/state/change', this.handleChangeEvent);
   }
 
-  handleChangeEvent = (storyState) => {
+  handleChangeEvent = ({ state: storyState }) => {
     this.setState({ storyState });
   };
 
@@ -63,6 +63,10 @@ class StatePanel extends React.Component {
 
   render() {
     const { storyState } = this.state;
+
+    if (storyState === null) {
+      return null;
+    }
 
     return (
       <div style={styles.panel}>

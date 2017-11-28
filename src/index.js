@@ -57,7 +57,7 @@ class StoryState extends React.Component {
 
     store.subscribe(this.handleStateChange);
     channel.on('dump247/state/reset', this.handleResetEvent);
-    channel.emit('dump247/state/change', store.state);
+    channel.emit('dump247/state/change', { state: store.state });
   }
 
   componentWillUnmount() {
@@ -65,6 +65,7 @@ class StoryState extends React.Component {
 
     store.unsubscribe(this.handleStateChange);
     channel.removeListener('dump247/state/reset', this.handleResetEvent);
+    channel.emit('dump247/state/change', { state: null });
   }
 
   handleResetEvent = () => {
@@ -77,7 +78,7 @@ class StoryState extends React.Component {
     const { channel } = this.props;
 
     this.setState({ storyState });
-    channel.emit('dump247/state/change', storyState);
+    channel.emit('dump247/state/change', { state: storyState });
   };
 
   render() {

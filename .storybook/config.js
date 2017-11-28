@@ -9,5 +9,8 @@ configure(function () {
   )))
   .add('with state 2', withState({ value: '' }, (store) => (
     <input {...store.state} type="text" onChange={({ target: { value } }) => store.set({ value })}/>
-  )));
+  )))
+  .add('no state', () => (
+    <div>No stuff</div>
+  ));
 }, module);
