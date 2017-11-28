@@ -6,7 +6,7 @@ class Store {
   constructor(initialState) {
     this.initialState = Object.freeze({ ...initialState });
     this.state = this.initialState;
-    this.handlers = {};
+    this.handlers = [];
   }
 
   set(state) {
@@ -24,19 +24,24 @@ class Store {
   subscribe(handler) {
     const subscriptionId = uuid();
 
-    this.handlers[subscriptionId] = handler;
+    this.handlers.push({ handler, subscriptionId });
 
     return subscriptionId;
   }
 
   unsubscribe(subscriptionId) {
-    delete this.handlers[subscriptionId];
+    for (const [index, { subscriptionId: handlerId }] of this.handlers) {
+      if (handlerId === subscriptionId) {
+        this.handlers.splice(index, 1);
+        break;
+      }
+    }
   }
 
   fireStateChange() {
     const state = this.state;
 
-    this.handlers.forEach(h => h(state));
+    this.handlers.forEach(({ handler }) => handler(state));
   }
 }
 
@@ -51,6 +56,8 @@ class StoryState extends React.Component {
   };
 
   componentDidMount() {
+    const { store } = this.props;
+
     this.subscriptionId = store.subscribe((storyState) => this.setState({ storyState }));
   }
 
