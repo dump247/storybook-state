@@ -19,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/dump247/storybook-state/issues"
   },
-  "homepage": "https://github.com/dump247/storybook-state#readme"
+  "homepage": "https://github.com/dump247/storybook-state#readme",
+  "peerDependencies": {
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0"
+  },
+  "dependencies": {
+    "uuid": "^3.1.0"
+  }
 }
