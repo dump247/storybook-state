@@ -35,7 +35,22 @@ storiesOf('Checkbox', module)
 ));
 ```
 
+## Extension
+
+### `withState(initialState, storyFn)`
+
+`initialState` is the initial state of the component. This is an object where each key is a
+state value to set.
+
+`storyFn` is the function that produces the story component. This function receives a `Store`
+object as the parameter.
+
+
 ## Store API
+
+### `store.state`
+
+Object that contains the current state.
 
 ### `store.set(state)`
 
