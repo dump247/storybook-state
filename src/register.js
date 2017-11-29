@@ -1,6 +1,7 @@
 import React from 'react';
 import T from 'prop-types';
 import addons from '@storybook/addons';
+import JsonView from 'react-json-view';
 
 const styles = {
   panel: {
@@ -70,7 +71,7 @@ class StatePanel extends React.Component {
 
     return (
       <div style={styles.panel}>
-        <div style={styles.currentState}>{JSON.stringify(storyState, null, 2)}</div>
+        <JsonView src={storyState} name={null} enableClipboard={false}/>
         <button style={styles.resetButton} type="button" onClick={this.handleResetClick}>Reset</button>
       </div>
     );
