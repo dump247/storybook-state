@@ -67,4 +67,4 @@ Reset the store to the initial state.
 This project includes a storybook panel that displays the current state and allows
 for resetting the state.
 
-![Panel Screenshot](panel-screenshot.png?raw=true "Panel")
+![Panel Screenshot](panel-screenshot.png?raw=true&v=2 "Panel")
