@@ -2,7 +2,7 @@ import React from 'react';
 import T from 'prop-types';
 import addons from '@storybook/addons';
 
-class Store {
+export class Store {
   constructor(initialState) {
     this.initialState = Object.freeze({ ...initialState });
     this.state = this.initialState;
