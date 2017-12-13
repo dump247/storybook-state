@@ -1,12 +1,11 @@
 # Storybook State
 
-An extension for [React Storybook](https://storybook.js.org/) that manages the state of a stateless
+An extension for [Storybook](https://storybook.js.org/) that manages the state of a stateless
 component. This makes it easier to write stories for stateless components.
 
 ## Getting Started
 
 ### Add @dump247/storybook
-
 
 ```sh
 npm install --save-dev @dump247/storybook-state
