@@ -27,11 +27,11 @@
     "access": "public"
   },
   "peerDependencies": {
+    "@storybook/addons": "^3.2.16",
     "prop-types": "^15.6.0",
     "react": "^15.6.0"
   },
   "dependencies": {
-    "@storybook/addons": "^3.2.16",
     "react-json-view": "^1.13.3"
   },
   "devDependencies": {
