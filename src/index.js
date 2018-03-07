@@ -41,7 +41,7 @@ export class Store {
   }
 }
 
-class StoryState extends React.Component {
+export class StoryState extends React.Component {
   static propTypes = {
     channel: T.object.isRequired,
     store: T.object.isRequired,
