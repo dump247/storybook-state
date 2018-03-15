@@ -84,7 +84,8 @@ export class StoryState extends React.Component {
   render() {
     const { store, storyFn } = this.props;
 
-    return storyFn(store);
+    const child = storyFn(store);
+    return React.isValidElement(child) ? child : child();
   }
 }
 
