@@ -85,16 +85,22 @@ describe('withState', () => {
     );
   };
 
-  test('initial state is passed to component', () => {
+  test('legacy signature', () => {
     const stateComponent = mount(withState({ var1: 1 }, (store) => <TestComponent {...store.state}/>)());
     const testComponent = stateComponent.childAt(0);
     expect(testComponent.props()).toEqual({ var1: 1 });
   });
 
+  test('initial state is passed to component', () => {
+    const stateComponent = mount(withState({ var1: 1 })(({ store }) => <TestComponent {...store.state}/>)({}));
+    const testComponent = stateComponent.childAt(0);
+    expect(testComponent.props()).toEqual({ var1: 1 });
+  });
+
   test('set existing state variable', () => {
-    const stateComponent = mount(withState({ var1: 1 }, (store) => (
+    const stateComponent = mount(withState({ var1: 1 })(({ store }) => (
       <TestComponent {...store.state} onSetVar1={() => store.set({ var1: 2 })}/>
-    ))());
+    ))({}));
 
     expectProps(stateComponent.childAt(0)).toEqual({ var1: 1 });
 
@@ -104,9 +110,9 @@ describe('withState', () => {
   });
 
   test('set new state variable', () => {
-    const stateComponent = mount(withState({ var1: 1 }, (store) => (
+    const stateComponent = mount(withState({ var1: 1 })(({ store }) => (
       <TestComponent {...store.state} onSetVar2={() => store.set({ var2: 3 })}/>
-    ))());
+    ))({}));
 
     expectProps(stateComponent.childAt(0)).toEqual({ var1: 1 });
 
@@ -116,12 +122,12 @@ describe('withState', () => {
   });
 
   test('reset to initial state', () => {
-    const stateComponent = mount(withState({ var1: 1 }, (store) => (
+    const stateComponent = mount(withState({ var1: 1 })(({ store }) => (
       <TestComponent {...store.state}
                      onSetVar2={() => store.set({ var2: 3 })}
                      onSetVar1={() => store.set({ var1: 2 })}
                      onReset={() => store.reset()}/>
-    ))());
+    ))({}));
 
     expect(stateComponent.childAt(0).props()).toMatchObject({ var1: 1 });
 
@@ -136,7 +142,7 @@ describe('withState', () => {
   });
 
   test('unmount state component', () => {
-    const stateComponent = mount(withState({ var1: 1 }, (store) => <TestComponent {...store.state}/>)());
+    const stateComponent = mount(withState({ var1: 1 })((store) => <TestComponent {...store.state}/>)({}));
     stateComponent.unmount();
   })
 });
