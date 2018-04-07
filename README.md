@@ -27,7 +27,7 @@ import { storiesOf } from '@storybook/react';
 import { withState } from '@dump247/storybook-state';
 
 storiesOf('Checkbox', module)
-.add('with check', withState({ checked: false }, (store) => (
+.add('with check', withState({ checked: false })(({ store }) => (
   <Checkbox {...store.state}
             label="Test Checkbox"
             onChange={(checked) => store.set({ checked })}/>
@@ -36,13 +36,23 @@ storiesOf('Checkbox', module)
 
 ## Extension
 
-### `withState(initialState, storyFn)`
+### `withState(initialState)(storyFn)`
 
 `initialState` is the initial state of the component. This is an object where each key is a
 state value to set.
 
-`storyFn` is the function that produces the story component. This function receives a `Store`
-object as the parameter.
+`storyFn` is the function that produces the story component. This function receives the story context
+object `{ store: Store }` as the parameter.
+
+This extension can be composed with other storybook extension functions:
+
+```javascript
+withState({ initialState: '' })(
+    withInfo(`Some cool info`)(
+        ({ store }) => <MyComponent {...store.state}/>
+    )
+)
+```
 
 
 ## Store API

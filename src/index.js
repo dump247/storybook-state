@@ -46,6 +46,7 @@ export class StoryState extends React.Component {
     channel: T.object.isRequired,
     store: T.object.isRequired,
     storyFn: T.func.isRequired,
+    context: T.object,
   };
 
   state = {
@@ -82,16 +83,25 @@ export class StoryState extends React.Component {
   };
 
   render() {
-    const { store, storyFn } = this.props;
+    const { store, storyFn, context } = this.props;
 
-    const child = storyFn(store);
+    const child = context ? storyFn(context) : storyFn(store);
     return React.isValidElement(child) ? child : child();
   }
 }
 
-export function withState(initialState, storyFn) {
+export function withState(initialState, storyFn=null) {
   const store = new Store(initialState || {});
   const channel = addons.getChannel();
 
-  return () => <StoryState store={store} storyFn={storyFn} channel={channel}/>;
+  if (storyFn) {
+    // Support legacy withState signature
+    return () => (
+      <StoryState store={store} storyFn={storyFn} channel={channel}/>
+    );
+  } else {
+    return (storyFn) => (context) => (
+      <StoryState store={store} storyFn={storyFn} channel={channel} context={{...context, store}}/>
+    );
+  }
 }

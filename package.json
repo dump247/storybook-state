@@ -36,6 +36,7 @@
     "react-json-view": "^1.13.3"
   },
   "devDependencies": {
+    "@storybook/addon-info": "^3.4.0",
     "@storybook/react": "^3.2.16",
     "@types/storybook__react": "^3.0.7",
     "babel-cli": "^6.26.0",
