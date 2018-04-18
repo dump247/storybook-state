@@ -29,8 +29,8 @@
   },
   "peerDependencies": {
     "@storybook/addons": "^3.2.16",
-    "prop-types": "^15.6.0",
-    "react": "^15.6.0"
+    "prop-types": "^15.5.0",
+    "react": "^15.5.0 || ^16.0.0"
   },
   "dependencies": {
     "react-json-view": "^1.13.3"
