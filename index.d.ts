@@ -21,4 +21,4 @@ export type Store<T> = {
 };
 
 export type StorybookStateCallback<T> = (store: Store<T>) => Renderable | Renderable[];
-export function withState<T extends {}>(state: T, callback: StorybookStateCallback<T>): RenderFunction;
+export function withState<T extends {}>(state: T, callback?: StorybookStateCallback<T>): any // RenderFunction;
