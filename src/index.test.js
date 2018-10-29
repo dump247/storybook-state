@@ -1,7 +1,7 @@
 import React from 'react';
 import { withState, Store } from './index';
 import { mount, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-15';
+import Adapter from 'enzyme-adapter-react-16';
 import addons from '@storybook/addons';
 
 jest.mock('@storybook/addons');

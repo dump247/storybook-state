@@ -33,6 +33,8 @@
     "react": "^15.5.0 || ^16.0.0"
   },
   "dependencies": {
+    "enzyme-adapter-react-16": "^1.6.0",
+    "react": "^16.6.0",
     "react-json-view": "^1.13.3"
   },
   "devDependencies": {
@@ -45,9 +47,9 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "enzyme": "^3.2.0",
-    "enzyme-adapter-react-15": "^1.0.5",
+    "enzyme-adapter-react-16": "^1.6.0",
     "jest": "^21.2.1",
-    "react-dom": "^15.6.0",
-    "react-test-renderer": "^15.6.2"
+    "react-dom": "^16.0.0",
+    "react-test-renderer": "^16.0.0"
   }
 }
