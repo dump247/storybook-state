@@ -20,5 +20,8 @@ export type Store<T> = {
   reset(): void;
 };
 
-export type StorybookStateCallback<T> = (store: Store<T>) => Renderable | Renderable[];
-export function withState<T extends {}>(state: T, callback?: StorybookStateCallback<T>): any // RenderFunction;
+export type LegacyStorybookStateCallback<T> = (store: Store<T>) => Renderable | Renderable[];
+export function withState<T extends {}>(state: T, callback: LegacyStorybookStateCallback<T>): any // RenderFunction;
+
+export type StorybookStateCallback<T> = (context: {store: Store<T>}) => Renderable | Renderable[];
+export function withState<T extends {}>(state: T): (callback: StorybookStateCallback<T>) => any
