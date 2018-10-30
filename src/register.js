@@ -63,18 +63,19 @@ class StatePanel extends React.Component {
   };
 
   render() {
+    const { active } = this.props;
     const { storyState } = this.state;
 
     if (storyState === null) {
       return null;
     }
 
-    return (
+    return active ? (
       <div style={styles.panel}>
         <JsonView src={storyState} name={null} enableClipboard={false}/>
         <button style={styles.resetButton} type="button" onClick={this.handleResetClick}>Reset</button>
       </div>
-    );
+    ) : null;
   }
 }
 
@@ -84,7 +85,7 @@ export function register() {
 
     addons.addPanel('dump247/state/panel', {
       title: 'State',
-      render: () => <StatePanel channel={channel} api={api}/>,
+      render: ({active}) => <StatePanel channel={channel} api={api} active={{active}} />,
     });
   });
 }
