@@ -34,6 +34,7 @@ class StatePanel extends React.Component {
   static propTypes = {
     channel: T.object,
     api: T.object,
+    active: T.bool
   };
 
   state = {
