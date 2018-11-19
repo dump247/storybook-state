@@ -33,7 +33,6 @@
     "react": "^15.5.0 || ^16.0.0"
   },
   "dependencies": {
-    "enzyme-adapter-react-16": "^1.6.0",
     "react": "^16.6.0",
     "react-json-view": "^1.13.3"
   },
