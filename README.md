@@ -21,17 +21,21 @@ import '@dump247/storybook-state/register';
 
 Use the extension to create a story.
 
-```javascript
+```jsx
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withState } from '@dump247/storybook-state';
 
-storiesOf('Checkbox', module)
-.add('with check', withState({ checked: false })(({ store }) => (
-  <Checkbox {...store.state}
-            label="Test Checkbox"
-            onChange={(checked) => store.set({ checked })}/>
-));
+storiesOf('Checkbox', module).add(
+  'with check',
+  withState({ checked: false })(({ store }) => (
+    <Checkbox
+      {...store.state}
+      label="Test Checkbox"
+      onChange={(checked) => store.set({ checked })}
+    />
+  )),
+);
 ```
 
 ## Extension
@@ -46,11 +50,11 @@ object `{ store: Store }` as the parameter.
 
 This extension can be composed with other storybook extension functions:
 
-```javascript
+```jsx
 withState({ initialState: '' })(
-    withInfo(`Some cool info`)(
-        ({ store }) => <MyComponent {...store.state}/>
-    )
+  withInfo(`Some cool info`)(
+    ({ store }) => <MyComponent {...store.state} />
+  )
 )
 ```
 
