@@ -1,4 +1,10 @@
 {
-  "presets": ["es2015", "stage-0", "react"],
-  "plugins": ["transform-react-remove-prop-types"]
+  "presets": [
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-object-rest-spread"
+  ]
 }
