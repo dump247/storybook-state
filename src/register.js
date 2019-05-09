@@ -2,6 +2,12 @@ import React from 'react';
 import T from 'prop-types';
 import addons from '@storybook/addons';
 import JsonView from 'react-json-view';
+import {
+  ADDON_ID,
+  ADDON_PANEL_ID,
+  ADDON_EVENT_CHANGE,
+  ADDON_EVENT_RESET,
+} from './constants';
 
 const styles = {
   panel: {
@@ -34,6 +40,7 @@ class StatePanel extends React.Component {
   static propTypes = {
     channel: T.object,
     api: T.object,
+    active: T.bool.isRequired,
   };
 
   state = {
@@ -43,13 +50,13 @@ class StatePanel extends React.Component {
   componentDidMount() {
     const { channel } = this.props;
 
-    channel.on('dump247/state/change', this.handleChangeEvent);
+    channel.on(ADDON_EVENT_CHANGE, this.handleChangeEvent);
   }
 
   componentWillUnmount() {
     const { channel } = this.props;
 
-    channel.removeListener('dump247/state/change', this.handleChangeEvent);
+    channel.removeListener(ADDON_EVENT_CHANGE, this.handleChangeEvent);
   }
 
   handleChangeEvent = ({ state: storyState }) => {
@@ -59,7 +66,7 @@ class StatePanel extends React.Component {
   handleResetClick = () => {
     const { channel } = this.props;
 
-    channel.emit('dump247/state/reset');
+    channel.emit(ADDON_EVENT_RESET);
   };
 
   render() {
@@ -79,12 +86,12 @@ class StatePanel extends React.Component {
 }
 
 export function register() {
-  addons.register('dump247/state', (api) => {
+  addons.register(ADDON_ID, (api) => {
     const channel = addons.getChannel();
 
-    addons.addPanel('dump247/state/panel', {
+    addons.addPanel(ADDON_PANEL_ID, {
       title: 'State',
-      render: () => <StatePanel channel={channel} api={api}/>,
+      render: ({ active, key }) => <StatePanel channel={channel} api={api} key={key} active={active} />,
     });
   });
 }

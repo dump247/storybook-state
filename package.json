@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "typings": "index.d.ts",
   "scripts": {
-    "build": "rm -rf dist/ && cd src/ && babel index.js register.js --out-dir ../dist",
+    "build": "rm -rf dist/ && cd src/ && babel index.js register.js constants.js --out-dir ../dist",
     "dist": "npm run build && npm publish",
     "test": "jest",
     "storybook": "npm run build && start-storybook -p 9001 -c .storybook"
