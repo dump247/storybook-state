@@ -1,6 +1,10 @@
 import React from 'react';
 import T from 'prop-types';
 import addons from '@storybook/addons';
+import {
+  ADDON_EVENT_CHANGE,
+  ADDON_EVENT_RESET,
+} from './constants';
 
 export class Store {
   constructor(initialState) {
@@ -57,16 +61,16 @@ export class StoryState extends React.Component {
     const { store, channel } = this.props;
 
     store.subscribe(this.handleStateChange);
-    channel.on('dump247/state/reset', this.handleResetEvent);
-    channel.emit('dump247/state/change', { state: store.state });
+    channel.on(ADDON_EVENT_RESET, this.handleResetEvent);
+    channel.emit(ADDON_EVENT_CHANGE, { state: store.state });
   }
 
   componentWillUnmount() {
     const { store, channel } = this.props;
 
     store.unsubscribe(this.handleStateChange);
-    channel.removeListener('dump247/state/reset', this.handleResetEvent);
-    channel.emit('dump247/state/change', { state: null });
+    channel.removeListener(ADDON_EVENT_RESET, this.handleResetEvent);
+    channel.emit(ADDON_EVENT_CHANGE, { state: null });
   }
 
   handleResetEvent = () => {
@@ -79,7 +83,7 @@ export class StoryState extends React.Component {
     const { channel } = this.props;
 
     this.setState({ storyState });
-    channel.emit('dump247/state/change', { state: storyState });
+    channel.emit(ADDON_EVENT_CHANGE, { state: storyState });
   };
 
   render() {

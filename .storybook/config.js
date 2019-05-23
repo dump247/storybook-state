@@ -5,10 +5,10 @@ import { withInfo } from '@storybook/addon-info';
 
 const Input = (props) => {
   return <input {...props.store.state} type="text" onChange={({ target: { value } }) => props.store.set({ value })}/>;
-}
+};
 
 configure(function () {
-  storiesOf('Test')
+  storiesOf('Test', module)
   .add('with state', withState({ value: '' }, (store) => <Input store={store}/>))
   .add('with state 2', withState({ value: '' }, (store) => <Input store={store}/>))
   .add('no state', () => <div>No stuff</div>)
