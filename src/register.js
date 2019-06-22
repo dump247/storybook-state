@@ -71,8 +71,9 @@ class StatePanel extends React.Component {
 
   render() {
     const { storyState } = this.state;
+    const { active } = this.props;
 
-    if (storyState === null) {
+    if (!active || storyState === null) {
       return null;
     }
 
