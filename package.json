@@ -28,7 +28,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@storybook/addons": "^3.2.16",
+    "@storybook/addons": ">3.2.16",
     "prop-types": "^15.5.0",
     "react": "^15.5.0 || ^16.0.0"
   },
