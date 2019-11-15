@@ -1,4 +1,4 @@
-import { Renderable, RenderFunction } from '@storybook/react';
+import { StoryFnReactReturnType } from "@storybook/react/dist/client/preview/types";
 export type Store<T> = {
   /**
    * @description
@@ -20,8 +20,17 @@ export type Store<T> = {
   reset(): void;
 };
 
-export type LegacyStorybookStateCallback<T> = (store: Store<T>) => Renderable | Renderable[];
-export function withState<T extends {}>(state: T, callback: LegacyStorybookStateCallback<T>): any // RenderFunction;
+export type LegacyStorybookStateCallback<T> = (
+  store: Store<T>
+) => StoryFnReactReturnType;
+export function withState<T extends {}>(
+  state: T,
+  callback: LegacyStorybookStateCallback<T>
+): any; // RenderFunction;
 
-export type StorybookStateCallback<T> = (context: {store: Store<T>}) => Renderable | Renderable[];
-export function withState<T extends {}>(state: T): (callback: StorybookStateCallback<T>) => any
+export type StorybookStateCallback<T> = (context: {
+  store: Store<T>;
+}) => StoryFnReactReturnType;
+export function withState<T extends {}>(
+  state: T
+): (callback: StorybookStateCallback<T>) => any;
