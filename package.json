@@ -2,10 +2,13 @@
   "name": "@dump247/storybook-state",
   "version": "1.6.1",
   "description": "Manage component state in storybook stories.",
-  "main": "dist/index.js",
+  "main": "dist/legacy/index.js",
+  "module": "dist/index.js",
   "typings": "index.d.ts",
   "scripts": {
-    "build": "rm -rf dist/ && cd src/ && babel index.js register.js constants.js --out-dir ../dist",
+    "build": "rm -rf dist/ && npm run build:esm && npm run build:legacy",
+    "build:esm": "babel --config-file='./babel.config.json' ./src --out-dir ./dist",
+    "build:legacy": "babel --config-file='./legacy-babel.config.json' ./src --out-dir ./dist/legacy",
     "dist": "npm run build && npm publish",
     "test": "jest",
     "storybook": "npm run build && start-storybook -p 9001 -c .storybook"
