@@ -13,7 +13,19 @@
       "presets": [
         ["@babel/preset-env", {
           "targets": { "node": "current" }
-        }]
+        }],
+        "@babel/preset-react"
+      ]
+    },
+    "commonjs": {
+      "presets": [
+        ["@babel/preset-env", { "modules": "commonjs" }],
+        "@babel/preset-react"
+      ],
+      "plugins": [
+        "@babel/plugin-transform-runtime",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-object-rest-spread"
       ]
     }
   }
