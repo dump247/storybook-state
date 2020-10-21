@@ -1,5 +1,7 @@
 # Storybook State
 
+*This project is no longer being maintained. The recommended replacement is the useState hook in React 16+.*
+
 An extension for [Storybook](https://storybook.js.org/) that manages the state of a stateless
 component. This makes it easier to write stories for stateless components.
 
